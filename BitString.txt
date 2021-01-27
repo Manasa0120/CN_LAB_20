@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+int cons5 (int ar[]) {
+    int count = 1;
+    for (int i = 0; i < 7; i++) {
+        if (count == 5) {
+            return i + 1;
+        }
+        if (ar[i] == 1 && ar[i + 1] == 1) {
+            count += 1;
+        } else {
+            count = 1;
+        }
+    }
+    return -1;
+}
+
+int main()
+{
+    int ar[8], res[24], flag [] = {0, 1, 1, 1, 1, 1, 1, 0};
+    printf ("Enter 8 bit number: ");
+    for (int i = 0; i < 8; i++) {
+        scanf ("%d ", &ar[i]);
+    }
+    int pos = cons5 (ar);
+    if (pos == -1) {
+        for (int i = 0; i < 8; i++) {
+            printf ("%d ", flag[i]);
+        }
+        for (int i = 0; i < 8; i++) {
+            printf ("%d ", ar[i]);
+        }
+        for (int i = 0; i < 8; i++) {
+            printf ("%d ", flag[i]);
+        }
+    } else {
+        for (int i = 0; i < 8; i++) {
+            printf ("%d ", flag[i]);
+        }        
+        for (int i = 0; i < 8; i++) {
+            if (i == pos) {
+                printf ("0 ");
+            }
+            printf ("%d ", ar[i]);
+        }
+        for (int i = 0; i < 8; i++) {
+            printf ("%d ", flag[i]);
+        }
+    }
+}
